@@ -1,75 +1,51 @@
-//1. object-literal syntax
-/*
-var obj = {
-    //value properties if an object
-    id: 1,
-    name: 'joydip',
-    salary: 1000,
+class Employee {
+    id: number;
+    name: string;
+    basicPay: number;
+    daPay: number;
+    hraPay: number;
+    totalSalary: number = 0;
 
-    //functional property of an object
-    show: function () {
-        return `Name=${this.name}, Id=${this.id}, Salary=${this.salary}`
+    constructor(id: number, name: string, basic: number, da: number, hra: number) {
+        this.basicPay = basic
+        this.daPay = da
+        this.hraPay = hra;
+        this.id = id;
+        this.name = name;
+    }
+    calculateSalary(): void {
+        this.totalSalary = this.basicPay + this.daPay + this.hraPay
     }
 }
 
-// obj.location = 'Bangalore'
-// obj.sayHi = function () {
-//     return 'Hi ' + this.name
-// }
+const anilEmployee = new Employee(1, 'anil', 1000, 2000, 3000)
+const sunilEmployee = new Employee(2, 'sunil', 1500, 2500, 3500)
+
+const employees: Employee[] = []
+
+employees.push(anilEmployee, sunilEmployee)
+
+employees.forEach(
+    function (e) {
+        e.calculateSalary()
+        console.log(`${e.name} has got salary of ${e.totalSalary}`);
+    }
+)
+/*
+for (let index = 0; index < employees.length; index++) {
+    const e = employees[index]
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
+}
+for (let e of employees) {
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
+}
+for (let index in employees) {
+    const e = employees[index]
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
+}
+//anilEmployee.calculateSalary()
+// console.log(`${anilEmployee.name} has got salary of ${anilEmployee.totalSalary}`);
 */
-
-//2. constructor function syntax
-/*
-function person(idVal, nameVal, salaryVal) {
-    this.id = idVal
-    this.name = nameVal
-    this.salary = salaryVal
-    this.show = function () {
-        return `Name=${this.name}, Id=${this.id}, Salary=${this.salary}`
-    }
-}
-     */
-class Person {
-    private id: number;
-    private name: string;
-    private salary: number;
-
-    constructor(idVal: number, nameVal: string, salaryVal: number) {
-        this.id = idVal
-        this.name = nameVal
-        this.salary = salaryVal
-    }
-    get Id() {
-        return this.id
-    }
-    set Id(value) {
-        this.id = value
-    }
-    get Name() {
-        return this.name
-    }
-    set Name(value) {
-        this.name = value
-    }
-    get Salary() {
-        return this.salary
-    }
-    set Salary(value) {
-        this.salary = value
-    }
-    show(): string {
-        return `Name=${this.name}, Id=${this.id}, Salary=${this.salary}`
-    }
-}
-
-var obj = new Person(1, 'joydip', 1000)
-// obj.location = 'Bangalore'
-// obj.sayHi = function () {
-//     return 'Hi ' + this.name
-// }
-var obj2 = new Person(2, 'sunil', 2000)
-console.log(obj.Name);
-console.log(obj['Salary']);
-console.log(obj.show());
-console.log(obj);
-console.log(obj2);

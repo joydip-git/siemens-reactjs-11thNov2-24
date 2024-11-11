@@ -1,19 +1,19 @@
 {
-  "name": "payroll-app",
+  "name": "ts-app",
   "version": "1.0.0",
   "scripts": {
     "compile": "tsc",
-    "compile-watch": "tsc -w",
-    "app": "node ./build/index.js"
+    "compile:w": "tsc --watch",
+    "app": "node ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "joydip",
   "license": "ISC",
-  "description": "",
+  "description": "simple ts app",
   "devDependencies": {
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "payroll-app": "file:"
+    "ts-app": "file:"
   }
 }

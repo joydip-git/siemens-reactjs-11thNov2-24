@@ -1,0 +1,18 @@
+Employee
+	data members => id, name, basic, da, hra, totalsalary
+	methods => calculateSalary
+		args: NA
+		return: void
+
+Manager<T> (interface)
+	 add(..):boolean => add a type in an array
+	 sort(choice:number):?? => returns a sorted array of a type	 
+	 getAll():?? => returns the array containing objects of a type
+
+EmployeeManager implements the interface and those methods
+
+create an object of the manager class
+call "add" method and pass one object at a time 
+call "getall" method to get the array, so that you can print the name and salary of every employee
+call "sort" method and pass a number (As choice) which returns the sorted array and you print every object's name, id and total salary 
+
