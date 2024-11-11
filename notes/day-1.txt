@@ -1,0 +1,65 @@
+https://github.com/joydip-git/siemens-reactjs-11thNov2-24
+
+Roadmap:
+JavaScript
+TypeScript
+
+Node JS
+
+
+S/W:
+-------------
+Node JS
+VS Code
+
+directory-name => react-training-apps
+
+Web Servers:
+----------------------
+Real time production web server:
+	 - IIS (Internet Information Services)
+	 - Tomcat (Apache)
+	 - NgInx
+	 - Vercel
+	 - ...
+
+App development server:
+-------------------------------
+Live Server, lite-server, webpack-dev-server etc.
+
+
+CSS styling:
+-----------------
+1. in-line style (style attribute)
+2. out-line style
+	a. using style tag in the same page
+	b. using separate CSS file
+
+creating CSS styles:
+-------------------------------
+1. element selector
+2. id selector
+3. class selector
+
+JavaScript:
+-----------------------
+JS engine => 
+1. chrome => V8
+2. safari => JS Core (Indigo)
+3. firefox => Spidermonkey
+4. opera
+
+Ryan Dahl in 2009 came up with a JS runtime is built at the top of V8 engine => Node JS
+
+
+
+
+
+
+
+
+
+
+
+
+

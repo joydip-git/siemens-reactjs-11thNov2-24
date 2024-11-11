@@ -1,0 +1,44 @@
+ /* 1. element selector */
+ /* h2 {
+            background-color: burlywood;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: 1px solid burlywood;
+            border-radius: 5px;
+        } */
+
+ /* 2. id selector */
+ /* #mainHeader {
+            background-color: burlywood;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: 1px solid burlywood;
+            border-radius: 5px;
+        } */
+
+ /* 3. class selector */
+ .my-style {
+     background-color: burlywood;
+     text-align: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     border: 1px solid burlywood;
+     border-radius: 5px;
+ }
+
+ body {
+     background-color: antiquewhite;
+ }
+
+ div {
+     text-align: center;
+ }
+
+ .button-style {
+     background-color: blueviolet;
+     border: 1px solid blueviolet;
+     border-radius: 5px;
+     color: white;
+     padding: 10px;
+     height: 50px;
+     width: 100px;
+ }
