@@ -49,7 +49,57 @@ JS engine =>
 3. firefox => Spidermonkey
 4. opera
 
+Node JS:
+--------------
 Ryan Dahl in 2009 came up with a JS runtime is built at the top of V8 engine => Node JS
+
+
+JS data types:
+---------------------------
+boolean, number, string, object, function
+
+undefined, NaN, null, Infinity
+var => to declare variables (loosely-typed)
+
+ECMA
+ECMAScript (ES) => guideline for scripting languages
+
+2015 => ES 6.0
+let and const keywords
+
+transpilation: 
+a. Different scripting language => JS
+b. New version of code (JS/Ts/NS etc.) => Older (backward-compatible) version of JS
+
+transpilers:
+JS (ES6+) => JS (vanilla) => babel
+TS (ES6+) => JS (vanilla) => typescript compiler (tsc)
+
+configuration file for JS app dependencies and other information: => package.json
+placement: at the root of the application directory
+how to create:
+a. manually
+b. using NPM (command => >npm init or >npm init --yes)
+
+TypeScript compiler
+-------------------------
+installation
+	a. local: >npm i typescript -D (development dependency)
+	b. global: >npm i typescript --location=global
+	[global path: C:\Users\<user-name>\AppData\Roaming\npm]
+
+TSC configuration file:
+how to create?
+	a. manual
+	b. using tsc tool (>.\node_modules\.bin\tsc --init)
+
+1. >npm init --yes => create package.json file (at the root of the directory)
+2. >npm i typescript -D => install TSC (locally)
+3. >.\node_modules\.bin\tsc --init => creates tsconfig.json file (at the root of the directory)
+4. configure stc in tsconfig.json file
+
+
+
 
 
 
