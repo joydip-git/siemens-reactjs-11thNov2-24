@@ -1,0 +1,103 @@
+1. revision of HTML and CSS
+2. JavaScript, engine, compilation and execution
+3. Document Object Model and DOM APIs (provided by browser)
+4. Node JS
+5. JavaScript
+		a. data types - string, number, boolean, object, function
+		b. operators
+			=== (strict equality) and !== (strict inequality)
+		c. control flow statements - if, if..else, nested if..else, while, do..while, switch..case, for, for...of and for...in loop, continue, break etc,
+		d. function
+		e. objects: collection of key and value pairs
+			i. object literal syntax:
+				var obj = {	prop1:value, prop2:value,  prop3:function(){}	}
+			ii. constructor function syntax
+				function name(arg1, arg2,....){
+					this.prop1 = arg1
+					this.prop2 = arg2
+					this.prop3 = function(){}
+				}
+				var obj = new name(....)
+			iii. ES6 class, constructor syntax:
+				class name{
+					constructor(arg1, arg2,....){
+						this.prop1 = arg1
+						this.prop2 = arg2						
+					}
+					//this.prop3 = function(){}
+					prop3/method-name(){
+						return this.prop1+' '+this.prop2+...;
+					}
+				}
+				var obj = new name(....)
+			f. ES6 inheritance feature (extends and super keywords):
+				class child extends name{
+					
+					constructor(arg1, arg2,arg3,...){
+						super(arg1, arg2,...)	
+						this.child-prop = arg3			
+					}
+					prop3/method-name(){
+						return super.prop3/method_name()+' '+this.child-prop;
+					}
+				}
+			g. ES6 templated string (`Value=${value}`)
+			h. ES6 let and const keywords
+			i. ES6 spread and rest operators
+			j. asynchronity in JS/TS => Promise API, async and await  keywords
+			k. ES6 object destructuring
+			l. ES6 module (export/import keywords) feature
+			m. ES6 arrow function
+
+6. TypeScript
+	a. Transpilation
+	b. Transpiler => TypeScript Compiler
+	c. commands to install
+	d. configure tsc through tsconfig.json
+	e. TS features
+		i. static type checking and strict data typing
+		ii. class => declare data members with access specifiers
+		iii. type keyword to create custom types for function, data types built on the top of existing type or product model specifiaction
+		iv. interface
+		v. generic
+	
+7. configuration file for JS apps:
+	a. package.json file
+	b. command to create
+	c. dependencies and dev-dependencies
+	d. package installation
+		i. local (npm i <package-name> [-D])
+		ii. global (npm i <package-name> --location=global)
+	e. package-lock.json file
+	f. write scripts in package.json file and how to run the scripts (npm run <script-name>)
+
+module formats:
+-------------------------
+a. ES6 module format (export/import)
+	export: export member1
+	import: import { member1, member2,...} from 'rel-path-module'
+
+b. Common JS format [default for Node JS]
+	export: module.exports = {prop1:member1, prop2:member2,...}
+	import: const { prop1, prop2} = require('rel-path-module')
+
+c. AMD (asynchronous module definition) format
+
+d. UMD (Universal module definition) format
+
+
+module loader: to load modules, by resolving dependencies amongst the files internally
+
+Require JS, system js etc.
+
+Note: Require JS understands ONLY AMD format
+
+Node JS has a module loader by defaul which understands Common JS format
+Browser DOES NOT HAVE any module loader s/w
+Supply a module loader while loading this app to the browser
+
+
+
+
+
+			

@@ -1,40 +1,53 @@
-"use strict";
-var Employee = /** @class */ (function () {
-    function Employee(id, name, basic, da, hra) {
-        this.totalSalary = 0;
-        this.basicPay = basic;
-        this.daPay = da;
-        this.hraPay = hra;
-        this.id = id;
-        this.name = name;
+define(["require", "exports", "./models/employee", "./service/employeemanger"], function (require, exports, employee_1, employeemanger_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    //user interface
+    var anilEmployee = new employee_1.Employee(1, 'anil', 1000, 2000, 3000);
+    anilEmployee.calculateSalary();
+    var sunilEmployee = new employee_1.Employee(2, 'sunil', 1500, 2500, 3500);
+    sunilEmployee.calculateSalary();
+    var manager = new employeemanger_1.EmployeeManager();
+    try {
+        console.log(manager.add(sunilEmployee) ? 'added' : 'could not add');
     }
-    Employee.prototype.calculateSalary = function () {
-        this.totalSalary = this.basicPay + this.daPay + this.hraPay;
-    };
-    return Employee;
-}());
-var anilEmployee = new Employee(1, 'anil', 1000, 2000, 3000);
-var sunilEmployee = new Employee(2, 'sunil', 1500, 2500, 3500);
-var employees = [];
-employees.push(anilEmployee, sunilEmployee);
-employees.forEach(function (e) {
-    e.calculateSalary();
-    console.log("".concat(e.name, " has got salary of ").concat(e.totalSalary));
+    catch (error) {
+        console.log(error.message);
+    }
+    try {
+        console.log(manager.add(anilEmployee) ? 'added' : 'could not add');
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+    var all = manager.getAll();
+    if (all.length > 0)
+        all.forEach(function (e) { return console.log("".concat(e.name, " has got salary of ").concat(e.totalSalary)); });
+    var allSorted = manager.sort(2);
+    if (allSorted.length > 0)
+        all.forEach(function (e) { return console.log("Name=".concat(e.name, ", Id=").concat(e.id, ", Total Salary= ").concat(e.totalSalary)); });
 });
-for (var index = 0; index < employees.length; index++) {
-    var e = employees[index];
-    e.calculateSalary();
-    console.log("".concat(e.name, " has got salary of ").concat(e.totalSalary));
+// employees.push(anilEmployee, sunilEmployee)
+// employees.forEach(
+//     function (e) {
+//         e.calculateSalary()
+//         console.log(`${e.name} has got salary of ${e.totalSalary}`);
+//     }
+// )
+/*
+for (let index = 0; index < employees.length; index++) {
+    const e = employees[index]
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
 }
-for (var _i = 0, employees_1 = employees; _i < employees_1.length; _i++) {
-    var e = employees_1[_i];
-    e.calculateSalary();
-    console.log("".concat(e.name, " has got salary of ").concat(e.totalSalary));
+for (let e of employees) {
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
 }
-for (var index in employees) {
-    var e = employees[index];
-    e.calculateSalary();
-    console.log("".concat(e.name, " has got salary of ").concat(e.totalSalary));
+for (let index in employees) {
+    const e = employees[index]
+    e.calculateSalary()
+    console.log(`${e.name} has got salary of ${e.totalSalary}`);
 }
 //anilEmployee.calculateSalary()
 // console.log(`${anilEmployee.name} has got salary of ${anilEmployee.totalSalary}`);
+*/ 
