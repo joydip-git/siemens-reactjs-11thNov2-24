@@ -96,6 +96,10 @@ Node JS has a module loader by defaul which understands Common JS format
 Browser DOES NOT HAVE any module loader s/w
 Supply a module loader while loading this app to the browser
 
+Asynchronity in JS/TS:
+---------------------------------
+
+
 
 
 

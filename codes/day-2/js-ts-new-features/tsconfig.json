@@ -5,6 +5,7 @@
         "target": "ES5",
         "strict": true,
         "module": "AMD",
+        "sourceMap": true,
         "forceConsistentCasingInFileNames": true,
         "lib": [
             "ES2022",

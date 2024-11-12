@@ -1,17 +1,25 @@
-export const add = (a: number, b: number) => a + b
-export const subtract = (a: number, b: number) => a - b
-
-// module.exports = { add: add, subtract: subtract }
-
-/*
-Module
-{
-    id:'',
-    path:'',
-    children:[],
-    exports:{ add:add, subtract:subtract  }
+// export const divide = (a: number, b: number) => {
+//     const p = new Promise<number>(
+//         //executor function
+//         (resolveFnRef, rejectFnRef) => {
+//             const res = a / b
+//             if (res === Infinity) {
+//                 const err = new Error('divisor should nt be zero...')
+//                 rejectFnRef(err)
+//             }
+//             else
+//                 //return res
+//                 resolveFnRef(res)
+//         }
+//     )
+//     return p;
+// }
+export const divide = async (a: number, b: number) => {
+    const res = a / b
+    if (res === Infinity)
+        throw new Error('divisor should nt be zero...')
+    else
+        return res
 }
-*/
-// const add = (a: number, b: number) => a + b
-// const subtract = (a: number, b: number) => a - b
 
+export const add = (a: number, b: number) => a + b

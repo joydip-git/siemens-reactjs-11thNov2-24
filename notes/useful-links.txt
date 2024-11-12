@@ -1,0 +1,7 @@
+JavaScript:
+https://javascript.info/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+JavaScript Execution:
+1. https://dev.to/jahid6597/javascript-execution-context-a-deep-dive-4kno
+2. https://www.freecodecamp.org/news/execution-context-how-javascript-works-behind-the-scenes/
