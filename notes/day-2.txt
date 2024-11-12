@@ -98,6 +98,36 @@ Supply a module loader while loading this app to the browser
 
 Asynchronity in JS/TS:
 ---------------------------------
+using Promise API
+
+React JS:
+---------------------------
+client-side UI development technique
+creates Single Page Application
+It's JavaScript library
+It helps you create an application with series of components
+React tells you to create a single file for a component where the design is done using JSX syntax. the extension of the file should be .jsx/.tsx.
+every component is nothing but a function and that function must return a React element/JSX element
+React helps you build a Virtual DOM with a series of React Elements and then finally translates them into actual HTML elements and then push that newly created HTML DOM inside the body of the Single HTML Page
+
+create-react-app tool:
+installation => >npm install create-react-app --location=global
+
+create react app using create-react-app tool: (with TS)
+>create-react-app first-react-app --template typescript
+
+state hook (useState method)
+
+const [valueIntheState, methodToUpdateTheValue ] =  useState(<initial-value>)
+
+a. you can as many states as you want
+b. every state can store different type of data
+c. to maintain the state of data as parr of the component ALWAYS use useState hook
+d. state updation is asynchronous.
+e. when the state updation gets over, the component function gets called once gaian and receives the new data. this way a new VDOM is created. React compares the previous VDOM and the new VDOM, finds out the difference and "patches up"/update the UI accordingly.
+f. DO NOT MUTATE THE STATE DIRECTLY, use the method returned by useState hook, to update the state
+g. a state of a component is ONLY for that component (intrinsic property of that component), can't be shared with other components
+
 
 
 

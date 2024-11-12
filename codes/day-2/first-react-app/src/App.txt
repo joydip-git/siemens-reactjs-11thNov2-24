@@ -1,0 +1,26 @@
+//import { createElement } from 'react';
+import './App.css';
+
+function App() {
+  console.log('App loaded...');
+  // const style = {
+  //   backgroundColor: 'burlywood',
+  //   textAlign: 'center'
+  // }
+
+  // const appElement = createElement('h2', { style: style }, 'Welcome to React JS')
+  const appElement = (
+    <div>
+      <h2
+        style={{ backgroundColor: 'burlywood', textAlign: 'center' }}>
+        welcome to React JS
+      </h2>
+      <p>
+        Introdcution to React JS components
+      </p>
+    </div>
+  )
+  return appElement
+}
+
+export default App;

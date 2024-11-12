@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "target": "ES5",
+        "strict": true,
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "jsx": "react-jsx",
+        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "ES2022",
+            "DOM"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "playground"
+    ]
+}
