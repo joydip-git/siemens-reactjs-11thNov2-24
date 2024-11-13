@@ -1,0 +1,7 @@
+1.	create a react app to display the list of products through a ProductList component
+2. display the products in a table in ProductList component and display only following property values: "imageUrl", "productName", "price", "starRating" (left->right)
+3.	nest the ProductList component in the root component (App)
+
+
+Note: image should be displayed in the table using <img> element
+Note: to represent the product objects in the sample array create a model (using interface/type)
