@@ -1,0 +1,47 @@
+how to maintain state of data of a component: using state (useState)
+binding
+	a. pass data from code to the template of the same component:
+		data binding: binding data in a component to an element in the template
+		<input type='text' value={data} >
+
+	b. pass data from template to code of the same component: 
+		event binding: binding an event of an element to a function
+		<input type='text' onInput/onChnage={function-name} >
+		<input type='text' onInput/onChnage={(e) => function-name(e.target.value)} >
+
+
+how to pass data from one component to another component:
+	a. when those two components are nested in one another (one is parent and another child) and they are NOT deeply nested =>
+
+	use props or property object to pass data. the properties of the property object becomes the properties of the component.
+	property object is readonly any attempt to directly mutate it will crash the application.
+
+	b. when the components are deeply nested in each other => context/observable
+
+	c. when the components are not nested in the same tree => redux/mobx etc. (application-wide state management)
+
+	Parent and Child
+
+	Child.tsx
+	type ChildPropType={ dataValue:string } 
+	export function Child(args:Readonly<ChildPropType>){
+		//property object is read-only, can't mutate it
+		//args.dataValue=''
+		return <span>Child component</span>;
+	}
+
+	Parent.tsx
+	export function Parent(){
+		let data = 'data'
+		return (
+			<div>
+				<Child dataValue={data}/>
+			</div>
+		)
+	}
+
+
+
+
+
+

@@ -36,14 +36,17 @@ export const Calculator = () => {
                     <label htmlFor="radioAdd">Add:&nbsp;</label>
                     <input type="radio" name="calcRadios" id="radioAdd"
                         onChange={() => setChoice(1)} />
+
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label htmlFor="radioSub">Subtract:&nbsp;</label>
                     <input type="radio" name="calcRadios" id="radioSub"
                         onChange={() => setChoice(2)} />
+
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label htmlFor="radioMulti">Multiply:&nbsp;</label>
                     <input type="radio" name="calcRadios" id="radioMulti"
                         onChange={() => setChoice(3)} />
+
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label htmlFor="radioDiv">Divide:&nbsp;</label>
                     <input type="radio" name="calcRadios" id="radioDiv"
@@ -51,21 +54,26 @@ export const Calculator = () => {
                 </div>
                 <div>
                     <label htmlFor="txtFirst">First:&nbsp;</label>
-                    <input type="number" id="txtFirst" onInput={
-                        (e) => {
-                            const input = e.target as HTMLInputElement
-                            setFirstValue(+input.value)
+                    <input type="number" id="txtFirst"
+                        onInput={
+                            (e) => {
+                                const input = e.target as HTMLInputElement
+                                setFirstValue(+input.value)
+                            }
+
                         }
-                    } />
+                        value={firstValue} />
                 </div>
                 <div>
                     <label htmlFor="txtSecond">Second:&nbsp;</label>
-                    <input type="number" id="txtSecond" onInput={
-                        (e) => {
-                            const input = e.target as HTMLInputElement
-                            setSecondValue(+input.value)
+                    <input type="number" id="txtSecond"
+                        onInput={
+                            (e) => {
+                                const input = e.target as HTMLInputElement
+                                setSecondValue(Number(input.value))
+                            }
                         }
-                    } />
+                        value={secondValue} />
                 </div>
                 <div>
                     <input type="button" value="Calculate" onClick={calculate} />
