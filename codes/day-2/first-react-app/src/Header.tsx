@@ -9,7 +9,7 @@ export function Header() {
     // const arr = useState('Welcome to React JS')
     // const message = arr[0]
     // const updateMessage = arr[1]
-    const [message, setMessage] = useState('Welcome to React JS')
+    const [message, setMessage] = useState('Welcome to React JS State')
 
     //functions
     const messageHandler = () => {
