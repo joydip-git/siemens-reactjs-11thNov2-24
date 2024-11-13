@@ -40,6 +40,16 @@ how to pass data from one component to another component:
 		)
 	}
 
+conditional rendering
+displaying list of items
+
+<ol>
+	<li>Anil</li>
+	<li>Anil</li>
+	<li>Anil</li>
+</ol>
+
+
 
 
 

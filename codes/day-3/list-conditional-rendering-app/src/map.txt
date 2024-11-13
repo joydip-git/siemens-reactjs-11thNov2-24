@@ -1,0 +1,9 @@
+const numbers = [1, 2, 3, 4]
+const mappedNumbers = numbers
+    .map(
+        (element) => {
+            return (element * 2).toString()
+        }
+    )
+console.log(numbers);
+console.log(mappedNumbers);
