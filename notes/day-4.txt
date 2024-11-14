@@ -13,3 +13,31 @@ DOM API: fetch()
 
 static and non-static methods:
 get(), post(), put(), delete(), patch(),....
+
+class component lifecycle:
+1. mounting phase:
+	a. creation of class component object (constructor gets called)
+		state will be initialized with default values for properties
+		props will be initialezd throgh the property object passed from parent
+
+	b. render method gets called => produces React Node (VDOM)
+	c. render method of React's Route element (in index.tsx) gets called => translates the VDOM to actual DOM. the actual DOM is inserted to the existing HTML DOM. (the component gets mounted)
+	this is when the "componentDidMount" event gets fired. 
+	this event gets fired ONLY ONCE in  the lifetime of the component object.
+	you can handle that event by using "componentDidMount" method
+
+2. update phase
+	when the class component state is updated internally or receives new property object
+	as soon as the state is updated or new property object is received, an event gets fired "componentDidUpdate".
+	this event gets fired (from 2nd cycle onwards) every time the component gets "updated".
+	you can handle that event using "componentDidUpdate" method
+
+3. error phase
+
+4. destruction phase:
+	when the component is "unmounted" (taken down from the browser - no longer displayed)
+	component object gets destroyed
+	this is when an event  "componentWillUnmount" will be fired (only one time)
+
+
+

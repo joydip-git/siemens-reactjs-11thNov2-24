@@ -3,6 +3,7 @@ import { getTodos } from "../../../services/todoservice"
 import { Todo } from "../../../models/todo"
 
 const TodoList = () => {
+    console.log('todolist rendered...');
     const [todos, setTodos] = useState<Todo[] | undefined>(undefined)
     const [isDataFetchingOver, setIsDataFetchingOver] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
