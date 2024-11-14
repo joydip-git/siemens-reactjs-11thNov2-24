@@ -1,0 +1,15 @@
+useEffect Hook:
+--------------------------------------
+
+
+
+Sending HTTP requests to backend RESTful API server:
+----------------------------------------------------------------
+
+https://jsonplaceholder.typicode.com/todos
+
+DOM API: fetch()
+3rd party API: axios
+
+static and non-static methods:
+get(), post(), put(), delete(), patch(),....
