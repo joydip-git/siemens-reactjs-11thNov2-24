@@ -101,6 +101,17 @@ useEffct(
 	[]
 )
 
+application-wide state management:
+------------------------------------
+flux
+
+redux => 3rd party package
+1. store (object)
+2. state (any)
+3. reducer (function)
+4. reducer map
+5. dispatch (method)
+6. action (object)
 
 
 
