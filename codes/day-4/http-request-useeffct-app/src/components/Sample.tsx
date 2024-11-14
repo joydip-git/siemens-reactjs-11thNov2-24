@@ -23,6 +23,7 @@ export class Sample extends Component<SamplePropType, SampleStateType> {
         // }
         console.log('sample created');
     }
+
     state: Readonly<SampleStateType> = {
         value: 10,
         todos: undefined,
@@ -43,20 +44,13 @@ export class Sample extends Component<SamplePropType, SampleStateType> {
         )
     }
 
-    componentDidMount(): void {
-        console.log('after mounting...');
-        //this.fetchTodos()
-    }
-    componentDidUpdate(prevProps: Readonly<SamplePropType>, prevState: Readonly<SampleStateType>, snapshot?: any): void {
-        console.log('after update....');
-        if (prevState.todos === undefined) {
-            this.fetchTodos()
-            //closure of resource
-        }
-    }
-    componentWillUnmount(): void {
-        //resource cleaning
-    }
+    // shouldComponentUpdate(nextProps: Readonly<SamplePropType>, nextState: Readonly<SampleStateType>, nextContext: any): boolean {
+    //     if (nextProps.data !== this.props.data)
+    //         return true
+    //     else
+    //         return false
+    // }
+
     render(): ReactNode {
         console.log('sample rendered...');
 
@@ -96,6 +90,24 @@ export class Sample extends Component<SamplePropType, SampleStateType> {
             </div>
         )
     }
+
+    componentDidMount(): void {
+        console.log('after mounting...');
+        //this.fetchTodos()
+    }
+
+    componentDidUpdate(prevProps: Readonly<SamplePropType>, prevState: Readonly<SampleStateType>, snapshot?: any): void {
+        console.log('after update....');
+        if (prevState.todos === undefined) {
+            this.fetchTodos()
+            //closure of resource
+        }
+    }
+
+    componentWillUnmount(): void {
+        //resource cleaning
+    }
+
 
     fetchTodos = async () => {
         try {

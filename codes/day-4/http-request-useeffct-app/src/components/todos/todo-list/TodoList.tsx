@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getTodos } from "../../../services/todoservice"
 import { Todo } from "../../../models/todo"
 
@@ -7,7 +7,7 @@ const TodoList = () => {
     const [todos, setTodos] = useState<Todo[] | undefined>(undefined)
     const [isDataFetchingOver, setIsDataFetchingOver] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const [showData, setShowData] = useState(false)
+    // const [showData, setShowData] = useState(false)
 
     const fetchTodos = async () => {
         try {
@@ -31,6 +31,18 @@ const TodoList = () => {
         }
     }
 
+    useEffect(
+        //equivalent to "componentDidMount()"
+        () => {
+            fetchTodos()
+
+            //equivalent to "componentWillUnmount()"
+            return () => {
+                console.log('executed when unmounted...write clean-up code here');
+            }
+        },
+        []
+    )
     let design: any;
     if (isDataFetchingOver) {
         if (errorMessage === '') {
@@ -52,18 +64,19 @@ const TodoList = () => {
         design = <span>Loading....</span>
 
 
-    return (
-        <div>
-            <button type="button" onClick={
-                () => {
-                    fetchTodos()
-                    setShowData(oldShow => !oldShow)
-                }
-            }>Load Data</button>
-            <br />
-            {showData && design}
-        </div>
-    )
+    return design
+    // return (
+    //     <div>
+    //         <button type="button" onClick={
+    //             () => {
+    //                 fetchTodos()
+    //                 setShowData(oldShow => !oldShow)
+    //             }
+    //         }>Load Data</button>
+    //         <br />
+    //         {showData && design}
+    //     </div>
+    // )
 }
 
 export default TodoList

@@ -1,8 +1,3 @@
-useEffect Hook:
---------------------------------------
-
-
-
 Sending HTTP requests to backend RESTful API server:
 ----------------------------------------------------------------
 
@@ -14,30 +9,104 @@ DOM API: fetch()
 static and non-static methods:
 get(), post(), put(), delete(), patch(),....
 
+two ways to create components:
+1. class component
+2. functional component
+
+class component offers =>
+1. state
+2. lifecycle
+
+class component state:
+1. must be an object
+2. only one state object (assigned to the state property of the class component) with all the data through several properties in the state
+3. to update use "setState" method (from base class Component<P,S>)
+4. initialize the state use constructor or directly in class code using "state" property
+5. old state is replaced by the new state with all properties from previous state object and updated values
+
+
 class component lifecycle:
 1. mounting phase:
 	a. creation of class component object (constructor gets called)
 		state will be initialized with default values for properties
 		props will be initialezd throgh the property object passed from parent
 
+	Note: DO NOT WRITE SIDE-EFFECT CAUSING CODES IN CONSTRUCTOR
+
 	b. render method gets called => produces React Node (VDOM)
+	Note: DO NOT WRITE SIDE-EFFECT CAUSING CODES IN render()
+
 	c. render method of React's Route element (in index.tsx) gets called => translates the VDOM to actual DOM. the actual DOM is inserted to the existing HTML DOM. (the component gets mounted)
 	this is when the "componentDidMount" event gets fired. 
 	this event gets fired ONLY ONCE in  the lifetime of the component object.
 	you can handle that event by using "componentDidMount" method
 
+	Note: DO WRITE SIDE-EFFECT CAUSING CODES IN componentDidMount()
+
 2. update phase
 	when the class component state is updated internally or receives new property object
-	as soon as the state is updated or new property object is received, an event gets fired "componentDidUpdate".
-	this event gets fired (from 2nd cycle onwards) every time the component gets "updated".
+
+	a. as soon as the state is updated or new property object is received, an event gets fired "shouldComponentUpdate" first. you can handle that event using "shouldComponentUpdate(newProps,newState)" method, which must return true or false.
+	this method should decide whether the component should be re-rendered or not.
+
+	b. if the "shouldComponentUpdate" returns true, then render() method gets called.
+
+	c. followed by the render() method, an event gets fired "componentDidUpdate".
+	this event gets fired (from 2nd cycle onwards) every time the component gets "updated" and "shouldComponentUpdate" returns true.
 	you can handle that event using "componentDidUpdate" method
 
-3. error phase
+	Note: DO WRITE SIDE-EFFECT CAUSING CODES IN componentDidMount().
+	Be careful not to cause infinite loop, since this event gets fired (From 2nd cycle onwards) every time.
+
+3. error phase:
+	componentDidCatch() method
 
 4. destruction phase:
 	when the component is "unmounted" (taken down from the browser - no longer displayed)
 	component object gets destroyed
 	this is when an event  "componentWillUnmount" will be fired (only one time)
+
+	Note: DO NOT WRITE SIDE-EFFECT CAUSING CODES IN componentWillUnmount(). Use it for releasing/cleaning up resources that you consume while writing side-effect causing code.
+
+
+class component disadvantages:
+1. object is created, puts pressure on runtime memory
+2. component state is a fat JS object, it can;t be of any other type
+3. component lifecycle
+	a. all code that you need to be executed as a result of an event have to be written in a single method respoding to that event)
+	b. releasing of all resources have to be done in unmount event
+	c. if a class component has many nested children components and they are also class components, then theor lifecycle might overlap
+4. you have to be careful about writing methods in class component
+	a. use arrow fuction style always while creatng any method which wants to access class object properties
+	b. never ever use arrow function for inherited methods, such as, render, component lifecycle hooks etc.
+
+alternate: functional component with React Hooks (functions)
+=> simple APIs providing the same facilities to functional components, such as, state and lifecycle like class component
+
+=> useState, useEffect, useMemo, useReducer, useRef, useCallback etc.
+
+NOTE: HOOKS CAN BE USED ONLY IN FUNCTIONAL COMPONENTS OR FROM OTHER CUSTOM HOOKS, NOT IN CLASS COMPONENTS
+
+a. in function component use useState() for states
+b. in function component use useEffect() for lifecycle
+
+useEffect hook:
+-----------------------
+it is a function, which takes a callback and an array of dependencies as two arguments.
+in that callback function you can write side-effect causing code
+it returns nothing
+
+useEffct(
+	()=>{ //side-effect code },
+	[]
+)
+
+
+
+
+
+
+
 
 
 
