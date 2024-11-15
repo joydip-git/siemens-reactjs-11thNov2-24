@@ -5,3 +5,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript
 JavaScript Execution:
 1. https://dev.to/jahid6597/javascript-execution-context-a-deep-dive-4kno
 2. https://www.freecodecamp.org/news/execution-context-how-javascript-works-behind-the-scenes/
+
+React JS:
+https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3
+
+React Hooks:
+https://www.youtube.com/playlist?list=PLC3y8-rFHvwisvxhZ135pogtX7_Oe3Q3A
+
+React Redux:
+https://www.youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK
+
+React Course: (udemy)
+https://www.udemy.com/course/react-the-complete-guide-incl-redux/
