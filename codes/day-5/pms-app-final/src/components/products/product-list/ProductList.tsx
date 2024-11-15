@@ -4,12 +4,14 @@ import ProductRow from "../product-row/ProductRow"
 import ProductDetail from "../product-detail/ProductDetail"
 import { Product } from "../../../models/product"
 import { getProducts } from "../../../services/productservice"
+import { useAppStoreDispatch, useAppStoreSelector } from "../../../redux/hooks"
+import { fetchAllProductsFaliure, fetchAllProductsInitiate, fetchAllProductsSuccess } from "../../../redux/allproductsslice"
 
 const ProductList = () => {
 
-    const [products, setProducts] = useState<Product[] | undefined>(undefined)
-    const [isFetchOver, setIsFetchOver] = useState(false)
-    const [errorInfo, setErrorInfo] = useState('')
+    const { products, isFetchOver, errorInfo } = useAppStoreSelector(state => state.allProductsState)
+    const dispatchFnRef = useAppStoreDispatch()
+
     const [selectedId, setSelectedId] = useState('')
 
     const selectedIdHandler = (id: string): void => {
@@ -20,23 +22,20 @@ const ProductList = () => {
         try {
             const response = await getProducts()
             if (response.status === 200) {
-                setProducts(response.data)
-                setErrorInfo('')
-                setIsFetchOver(true)
+                dispatchFnRef(fetchAllProductsSuccess(response.data))
             } else {
-                setProducts(undefined)
-                setErrorInfo('could net fetch records...')
-                setIsFetchOver(true)
+                dispatchFnRef(fetchAllProductsFaliure('could not fetch data...'))
             }
         } catch (error: any) {
-            setProducts(undefined)
-            setErrorInfo(error.message)
-            setIsFetchOver(true)
+            dispatchFnRef(fetchAllProductsFaliure(error.message))
         }
     }
 
     useEffect(
-        () => { fetchProducts() },
+        () => {
+            dispatchFnRef(fetchAllProductsInitiate())
+            fetchProducts()
+        },
         []
     )
 

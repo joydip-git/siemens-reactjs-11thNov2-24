@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import './ProductDetail.css'
-import { Product } from "../../../models/product";
 import { getProduct } from "../../../services/productservice";
+import { useAppStoreDispatch, useAppStoreSelector } from "../../../redux/hooks";
+import { fetchProductFaliure, fetchProductInitiate, fetchProductSuccess } from "../../../redux/singleproductslice";
 
 type ProductDetailPropType = {
     selectedProductId: string;
@@ -9,31 +10,27 @@ type ProductDetailPropType = {
 const ProductDetail = (props: Readonly<ProductDetailPropType>) => {
     const { selectedProductId } = props
 
-    const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined)
-    const [isFetchOver, setIsFetchOver] = useState(false)
-    const [errorInfo, setErrorInfo] = useState('')
+    const { product, errorInfo, isFetchOver } = useAppStoreSelector(state => state.singleProductState)
+    const dispatchFnRef = useAppStoreDispatch()
 
     const fetchProduct = async () => {
         try {
             const response = await getProduct(props.selectedProductId)
             if (response.status === 200) {
-                setSelectedProduct(response.data)
-                setErrorInfo('')
-                setIsFetchOver(true)
+                dispatchFnRef(fetchProductSuccess(response.data))
             } else {
-                setSelectedProduct(undefined)
-                setErrorInfo('could not fetch records...')
-                setIsFetchOver(true)
+                dispatchFnRef(fetchProductFaliure('could not fetch data..'))
             }
         } catch (error: any) {
-            setSelectedProduct(undefined)
-            setErrorInfo(error.message)
-            setIsFetchOver(true)
+            dispatchFnRef(fetchProductFaliure(error.message))
         }
     }
 
     useEffect(
-        () => { fetchProduct() },
+        () => {
+            dispatchFnRef(fetchProductInitiate())
+            fetchProduct()
+        },
         [selectedProductId]
     )
 
@@ -41,25 +38,25 @@ const ProductDetail = (props: Readonly<ProductDetailPropType>) => {
 
     if (isFetchOver) {
         if (errorInfo === '') {
-            if (selectedProduct) {
+            if (product) {
                 design = (
                     <div className="card-style">
                         <div>
-                            <img src={selectedProduct.imageUrl}
+                            <img src={product.imageUrl}
                                 alt="NA" />
                         </div>
                         <div>
-                            <span>Id: &nbsp; {selectedProduct.id}</span>
+                            <span>Id: &nbsp; {product.id}</span>
                             <br />
-                            <span>Name: &nbsp; {selectedProduct.productName}</span>
+                            <span>Name: &nbsp; {product.productName}</span>
                             <br />
-                            <span>Code: &nbsp; {selectedProduct.productCode}</span>
+                            <span>Code: &nbsp; {product.productCode}</span>
                             <br />
-                            <span>Description: &nbsp; {selectedProduct.description}</span>
+                            <span>Description: &nbsp; {product.description}</span>
                             <br />
-                            <span>Released On: &nbsp; {selectedProduct.releaseDate}</span>
+                            <span>Released On: &nbsp; {product.releaseDate}</span>
                             <br />
-                            <span>Rating: &nbsp; {selectedProduct.starRating}</span>
+                            <span>Rating: &nbsp; {product.starRating}</span>
                         </div>
                     </div>
                 )
