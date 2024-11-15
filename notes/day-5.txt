@@ -1,0 +1,13 @@
+redux coding:
+------------------------
+1. legacy version
+2. redux js toolkit
+	note: do not install "redux" package if you want to use redux js toolkit package.
+
+
+interface PayloadAction<T>{
+	type:string;
+	payload?:T;
+}
+
+action:PayloadAction<Todo[]>

@@ -1,0 +1,9 @@
+.card-style {
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: bisque;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-right: 150px;
+    margin-bottom: 150px;
+}
