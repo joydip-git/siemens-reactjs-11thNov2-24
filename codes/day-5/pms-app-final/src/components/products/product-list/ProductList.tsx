@@ -12,12 +12,6 @@ const ProductList = () => {
     const { products, isFetchOver, errorInfo } = useAppStoreSelector(state => state.allProductsState)
     const dispatchFnRef = useAppStoreDispatch()
 
-    const [selectedId, setSelectedId] = useState('')
-
-    const selectedIdHandler = (id: string): void => {
-        setSelectedId(id)
-    }
-
     const fetchProducts = async () => {
         try {
             const response = await getProducts()
@@ -44,8 +38,8 @@ const ProductList = () => {
         if (errorInfo === '') {
             if (products && products.length > 0) {
                 design = (
-                    <div className="container-style">
-                        <table>
+                    <>
+                        <table className="table table-hover">
                             <thead className="table-header-style">
                                 <tr>
                                     <th>Image</th>
@@ -54,7 +48,7 @@ const ProductList = () => {
                                     <th>Rating</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="table-dark">
                                 {
                                     products.map(
                                         (p) => {
@@ -62,7 +56,6 @@ const ProductList = () => {
                                                 <ProductRow
                                                     product={p}
                                                     key={p.id}
-                                                    selectIdHandler={selectedIdHandler}
                                                 />
                                             )
                                         }
@@ -70,10 +63,10 @@ const ProductList = () => {
                                 }
                             </tbody>
                         </table>
-                        {
+                        {/* {
                             selectedId !== '' ? <ProductDetail selectedProductId={selectedId} /> : <span>Click on an Image to View the Details</span>
-                        }
-                    </div>
+                        } */}
+                    </>
                 )
             } else
                 design = <span>No records....</span>

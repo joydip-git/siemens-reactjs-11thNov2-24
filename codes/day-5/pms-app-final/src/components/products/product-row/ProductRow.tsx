@@ -1,21 +1,22 @@
+import { Link } from "react-router-dom"
 import { Product } from "../../../models/product"
 
 type ProductRowPropType = {
-    product: Product,
-    selectIdHandler: (id: string) => void
+    product: Product
 }
 const ProductRow = (props: Readonly<ProductRowPropType>) => {
-    const { product, selectIdHandler } = props
+    const { product } = props
     return (
         <tr>
             <td>
-                <img
-                    className="image-style"
-                    src={product.imageUrl}
-                    alt="NA"
-                    title={product.productName}
-                    onClick={() => selectIdHandler(product.id)}
-                />
+                <Link to={`/products/view/${product.id}`}>
+                    <img
+                        className="image-style"
+                        src={product.imageUrl}
+                        alt="NA"
+                        title={product.productName}
+                    />
+                </Link>
             </td>
             <td>{product.productName}</td>
             <td>{product.price}</td>

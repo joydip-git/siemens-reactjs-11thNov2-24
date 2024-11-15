@@ -3,19 +3,21 @@ import './ProductDetail.css'
 import { getProduct } from "../../../services/productservice";
 import { useAppStoreDispatch, useAppStoreSelector } from "../../../redux/hooks";
 import { fetchProductFaliure, fetchProductInitiate, fetchProductSuccess } from "../../../redux/singleproductslice";
+import { useNavigate, useParams } from "react-router-dom";
 
-type ProductDetailPropType = {
-    selectedProductId: string;
+type ParamsType = {
+    id: string
 }
-const ProductDetail = (props: Readonly<ProductDetailPropType>) => {
-    const { selectedProductId } = props
+const ProductDetail = () => {
+    const { id } = useParams<ParamsType>()
+    const navigate = useNavigate()
 
     const { product, errorInfo, isFetchOver } = useAppStoreSelector(state => state.singleProductState)
     const dispatchFnRef = useAppStoreDispatch()
 
-    const fetchProduct = async () => {
+    const fetchProduct = async (selectedProductId: string) => {
         try {
-            const response = await getProduct(props.selectedProductId)
+            const response = await getProduct(selectedProductId)
             if (response.status === 200) {
                 dispatchFnRef(fetchProductSuccess(response.data))
             } else {
@@ -28,10 +30,12 @@ const ProductDetail = (props: Readonly<ProductDetailPropType>) => {
 
     useEffect(
         () => {
-            dispatchFnRef(fetchProductInitiate())
-            fetchProduct()
+            if (id) {
+                dispatchFnRef(fetchProductInitiate())
+                fetchProduct(id)
+            }
         },
-        [selectedProductId]
+        [id]
     )
 
     let design: any;
@@ -40,28 +44,21 @@ const ProductDetail = (props: Readonly<ProductDetailPropType>) => {
         if (errorInfo === '') {
             if (product) {
                 design = (
-                    <div className="card-style">
-                        <div>
-                            <img src={product.imageUrl}
-                                alt="NA" />
-                        </div>
-                        <div>
-                            <span>Id: &nbsp; {product.id}</span>
-                            <br />
-                            <span>Name: &nbsp; {product.productName}</span>
-                            <br />
-                            <span>Code: &nbsp; {product.productCode}</span>
-                            <br />
-                            <span>Description: &nbsp; {product.description}</span>
-                            <br />
-                            <span>Released On: &nbsp; {product.releaseDate}</span>
-                            <br />
-                            <span>Rating: &nbsp; {product.starRating}</span>
+                    <div className="card" id='cardMain'>
+                        <img src={product.imageUrl} className="card-img-top" alt="NA" />
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                {product.productName}
+                            </h5>
+                            <p className="card-text">{product.description}</p>
+                            <button type="button" className="btn btn-primary" onClick={() => navigate(`/products/edit/${product.id}`)}>
+                                Edit
+                            </button>
                         </div>
                     </div>
                 )
             } else {
-                design = <span>No product with id {selectedProductId} found</span>
+                design = <span>No product with id {id} found</span>
             }
         } else {
             design = <span>{errorInfo}</span>

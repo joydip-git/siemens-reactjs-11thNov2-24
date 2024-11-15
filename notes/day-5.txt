@@ -11,3 +11,37 @@ interface PayloadAction<T>{
 }
 
 action:PayloadAction<Todo[]>
+
+Routing:
+---------------------
+3rd party package: react-router-dom
+
+http://localhost:3001/ 		 => Home
+http://localhost:3001/home  => Home
+
+http://localhost:3001/products 		   => ProductList [ProducRow components]
+http://localhost:3001/products/view/:id 	=> ProductDetail {'id':'1'}
+http://localhost:3001/products/edit/1 	=> EditProduct
+http://localhost:3001/products/add   	=> AddProduct
+
+Route => <Route path='home' element={<Home />} />
+
+Routing thrugh JSX:
+------------------------
+<BrowserRouter>
+	<Routes>
+		<Route path='home' element={<Home />} />
+	</Routes>
+</BrowserRouter>
+
+Link, Route, Routes => components
+useParams(), useNavigate(), useRouter() => hooks
+
+
+
+
+
+
+
+
+

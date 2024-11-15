@@ -6,14 +6,3 @@
 .table-header-style {
     background-color: burlywood;
 }
-
-table {
-    margin: 20px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.container-style {
-    text-align: center;
-    margin-left: 400px;
-    margin-right: 150px;
-}
